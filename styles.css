@@ -1,0 +1,975 @@
+/* ===== RESET & BASE STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #15142b;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ===== MOBILE MENU STYLES ===== */
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.hamburger {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  bottom: -8px;
+}
+
+.mobile-menu-button.active .hamburger {
+  background-color: transparent;
+}
+
+.mobile-menu-button.active .hamburger::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.mobile-menu-button.active .hamburger::after {
+  transform: rotate(-45deg);
+  bottom: 0;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background-color: rgba(27, 26, 47, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 80px 20px 20px;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-menu ul {
+  list-style: none;
+}
+
+.mobile-menu li {
+  margin-bottom: 20px;
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  display: block;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.mobile-menu a:hover {
+  color: #007bff;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 998;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===== HEADER STYLES ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: rgba(27, 26, 47, 0.7);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  backdrop-filter: blur(5px);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* ===== BUTTON STYLES ===== */
+.start-button,
+.button-primary,
+.button-secondary {
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.2);
+}
+
+.start-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: linear-gradient(45deg, #8a2be2, #9370db);
+  color: white;
+}
+
+.start-button:hover {
+  background: linear-gradient(45deg, #9370db, #8a2be2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138, 43, 226, 0.3);
+}
+
+.button-primary {
+  padding: 15px 30px;
+  font-size: 18px;
+  background: linear-gradient(45deg, #8a2be2, #9370db);
+  color: white;
+}
+
+.button-primary:hover {
+  background: linear-gradient(45deg, #9370db, #8a2be2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138, 43, 226, 0.3);
+}
+
+.button-secondary {
+  padding: 15px 30px;
+  font-size: 18px;
+  background: linear-gradient(45deg, #9370db, #8a2be2);
+  color: white;
+}
+
+.button-secondary:hover {
+  background: linear-gradient(45deg, #8a2be2, #9370db);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(138, 43, 226, 0.3);
+}
+
+.buttons-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 100px 20px;
+  background-image: url('./images/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 0;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 40px;
+  max-width: 800px;
+}
+
+.hero .stats-container {
+  margin-top: 30px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== SECTION STYLES ===== */
+.stats-section,
+.steps-section,
+.features-section,
+.withdraws-section,
+.testimonials-section,
+.cloud-mining-info-section {
+  padding: 50px 20px;
+}
+
+/* ===== STATS SECTION ===== */
+.stats-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 250px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 30px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-card.blue .stat-icon {
+  color: #3498db;
+}
+
+.stat-card.red .stat-icon {
+  color: #e74c3c;
+}
+
+.stat-icon {
+  font-size: 24px;
+  margin-bottom: 15px;
+  border: 2px solid;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* ===== STEPS SECTION ===== */
+.steps-container,
+.features-container,
+.withdraws-container,
+.testimonials-container,
+.cloud-mining-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.steps-header,
+.features-header,
+.withdraws-header,
+.testimonials-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.steps-title,
+.features-title,
+.withdraws-title,
+.testimonials-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.steps-subtitle,
+.features-subtitle,
+.withdraws-subtitle,
+.testimonials-description {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.step-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.step-card {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 15px;
+  padding: 30px;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.step-number {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ff6b6b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  position: absolute;
+  left: 30px;
+  top: 30px;
+}
+
+.step-content {
+  padding-left: 70px;
+}
+
+.step-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  margin-left: 20px;
+  position: relative;
+}
+
+.step-title::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 30px;
+  background-color: #ff6b6b;
+  border-radius: 3px;
+}
+
+.step-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* ===== FEATURES SECTION ===== */
+.feature-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.feature-card {
+  flex: 1;
+  min-width: 300px;
+  max-width: 380px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 15px;
+  padding: 40px 30px;
+  text-align: center;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 25px;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.feature-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* ===== WITHDRAWS SECTION ===== */
+.withdraws-table-container {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: auto;
+  position: relative;
+  max-height: 400px;
+}
+
+.withdraws-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.withdraws-table th {
+  text-align: left;
+  padding: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #adb5bd;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: #1a1a1a;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.withdraws-table td {
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.withdraws-table tr:last-child td {
+  border-bottom: none;
+}
+
+.withdraws-table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.withdraws-table tbody tr.new-row {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; background-color: rgba(138, 43, 226, 0.3); }
+  to { opacity: 1; background-color: transparent; }
+}
+
+.coin-icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.amount {
+  color: #4cd964;
+  font-weight: 600;
+}
+
+.status-badge {
+  background-color: #4cd964;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* ===== TESTIMONIALS SECTION ===== */
+.testimonial-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.testimonial-card {
+  flex: 1;
+  min-width: 300px;
+  max-width: 380px;
+  background-color: rgba(106, 90, 205, 0.1);
+  border-radius: 15px;
+  padding: 40px 25px;
+  text-align: center;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.testimonial-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.author-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.author-info {
+  text-align: left;
+}
+
+.author-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.author-title {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* ===== CLOUD MINING INFO SECTION ===== */
+.cloud-mining-card {
+  background: linear-gradient(45deg, rgba(80, 40, 120, 0.3), rgba(130, 80, 180, 0.1));
+  border-radius: 15px;
+  padding: 60px 40px;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+  overflow: hidden;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+}
+
+.mining-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  color: #fff;
+}
+
+.mining-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  opacity: 0.9;
+  padding: 0 20px;
+  max-width: 1000px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background-color: transparent;
+  padding: 15px 10px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.copyright {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding: 0 5px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #9370db;
+  text-decoration: underline;
+}
+
+/* ===== MEDIA QUERIES ===== */
+@media screen and (max-width: 1024px) {
+  .hero {
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .steps-title,
+  .features-title,
+  .withdraws-title,
+  .testimonials-title {
+    font-size: 2rem;
+  }
+  
+  .stat-card {
+    min-width: 200px;
+  }
+
+  .feature-card,
+  .testimonial-card {
+    padding: 30px 20px;
+  }
+
+  .cloud-mining-card {
+    padding: 40px 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    font-size: 20px;
+  }
+
+  .start-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  header {
+    padding: 15px 20px;
+  }
+  
+  .hero {
+    background-size: cover;
+    background-position: center;
+    padding: 20px 15px;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    padding: 0 20px;
+    margin-top: 60px;
+  }
+  
+  .buttons-container {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    gap: 15px;
+  }
+  
+  .button-primary,
+  .button-secondary {
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+  
+  .steps-title,
+  .features-title,
+  .withdraws-title,
+  .testimonials-title {
+    font-size: 1.8rem;
+    padding: 0 15px;
+  }
+  
+  .steps-subtitle,
+  .features-subtitle,
+  .withdraws-subtitle,
+  .testimonials-description {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+  
+  .feature-card,
+  .testimonial-card {
+    min-width: 100%;
+    margin: 0 15px;
+  }
+  
+  .cloud-mining-card {
+    padding: 40px 20px;
+    margin: 0 15px;
+  }
+  
+  .mining-title {
+    font-size: 2rem;
+  }
+  
+  .mining-description {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .stats-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px auto;
+    max-width: 95%;
+  }
+
+  .stat-card {
+    width: calc(50% - 10px);
+    padding: 12px;
+    margin: 0;
+    min-height: auto;
+  }
+
+  .stat-value {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+  }
+
+  .stat-icon {
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .withdraws-table-container {
+    margin: 0 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero {
+    background-size: cover;
+    background-position: center;
+    padding: 12px 15px;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+    margin-top: 50px;
+  }
+  
+  .stat-card {
+    width: calc(50% - 8px);
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .stat-value {
+    font-size: 14px;
+  }
+  
+  .stat-label {
+    font-size: 11px;
+  }
+  
+  .steps-title,
+  .features-title,
+  .withdraws-title,
+  .testimonials-title {
+    font-size: 1.5rem;
+    padding: 0 10px;
+  }
+  
+  .step-card {
+    padding: 20px;
+    margin: 0 10px 20px;
+  }
+  
+  .step-content {
+    padding-left: 50px;
+  }
+  
+  .step-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    left: 20px;
+    top: 20px;
+  }
+  
+  .withdraws-table th,
+  .withdraws-table td {
+    padding: 15px 10px;
+    font-size: 0.9rem;
+  }
+
+  .feature-card,
+  .testimonial-card {
+    padding: 25px 15px;
+    margin: 0 10px 20px;
+  }
+
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+  }
+
+  .feature-title {
+    font-size: 1.3rem;
+  }
+
+  .feature-description {
+    font-size: 0.9rem;
+  }
+
+  .testimonial-text {
+    font-size: 0.9rem;
+    min-height: 120px;
+  }
+
+  .author-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .author-name {
+    font-size: 1rem;
+  }
+
+  .author-title {
+    font-size: 0.8rem;
+  }
+
+  .cloud-mining-card {
+    padding: 30px 15px;
+    margin: 0 10px;
+  }
+
+  .mining-title {
+    font-size: 1.8rem;
+    padding-left: 10px;
+  }
+
+  .mining-description {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+
+  .footer {
+    padding: 15px 10px;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+  }
+
+  .start-button {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .button-primary,
+  .button-secondary {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .hero {
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* ===== TOUCH DEVICE OPTIMIZATIONS ===== */
+@media (hover: none) {
+  .button-primary,
+  .button-secondary,
+  .start-button {
+    transition: transform 0.2s;
+  }
+
+  .button-primary:active,
+  .button-secondary:active,
+  .start-button:active {
+    transform: scale(0.98);
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  body {
+    background-color: white;
+    color: black;
+  }
+
+  header,
+  .buttons-container,
+  .footer {
+    display: none;
+  }
+
+  .hero,
+  .stats-section,
+  .steps-section,
+  .features-section,
+  .withdraws-section,
+  .testimonials-section,
+  .cloud-mining-info-section {
+    padding: 20px 0;
+  }
+
+  .stat-card,
+  .feature-card,
+  .testimonial-card,
+  .cloud-mining-card {
+    border: 1px solid #ddd;
+    background-color: white;
+    color: black;
+  }
+} 
